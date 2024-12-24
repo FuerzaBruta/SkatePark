@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio de Sesión - SkatePark</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/form.css">
+  <link rel="stylesheet" href="/css/login.css">
+</head>
+
+<body>
+  {{> header}}
+
+  <div class="container" id="container">
+      <div class="form-container sign-up">
+        <form>
+          <h1>Crea una cuenta Bro!</h1>
+          <input type="text" placeholder="Nombre" />
+          <input type="email" placeholder="Email" />
+          <input type="password" placeholder="Password" />
+          <button>Registrate</button>
+        </form>
+      </div>
+
+      <div class="form-container sign-in">
+        <form>
+          <h1>Inicia sesión Bro!</h1>
+          <input type="email" placeholder="Email" />
+          <input type="password" placeholder="Password" />
+          <a href="#">¿Olvidaste tu contraseña Bro?</a>
+          <button>Iniciar Sesión</button>
+        </form>
+      </div>
+
+      <div class="toggle-container">
+        <div class="toggle">
+          <div class="toggle-panel toggle-left">
+            <h1>Bienvenido Bro!</h1>
+            <p>Introduce tus datos personales para utilizar todas las funciones del sitio</p>
+            <button class="hidden" id="login">Iniciar Sesión</button>
+          </div>
+
+          <div class="toggle-panel toggle-right">
+            <h1>¡Hola, Bro!</h1>
+            <p>
+              Regístrate con sus datos personales y utiliza todas las funciones del sitio.
+            </p>
+            <button class="hidden" id="register">Registrate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/login.js"></script>
+</body>
+
+</html>

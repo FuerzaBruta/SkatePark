@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "foto": "/img/participant1.jpg",
+        "nombre": "Tony Hawk",
+        "experiencia": 12,
+        "especialidad": "Kickflip",
+        "estado": "Registrado"
+    },
+    {
+        "id": 2,
+        "foto": "/img/participant2.jpg",
+        "nombre": "Evelien Bouilliart",
+        "experiencia": 10,
+        "especialidad": "Heelflip",
+        "estado": "Registrado"
+    },
+    {
+        "id": 3,
+        "foto": "/img/participant3.jpg",
+        "nombre": "Danny Way",
+        "experiencia": 8,
+        "especialidad": "Ollie",
+        "estado": "Pendiente"
+    }
+]

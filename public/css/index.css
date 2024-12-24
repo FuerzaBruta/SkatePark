@@ -1,0 +1,228 @@
+h1 {
+    font-family: "Anton SC", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 30px;
+    z-index: 2;
+    text-align: center;
+    font-size: 9rem;
+    margin: 0;
+    background: linear-gradient(120deg,  #ffffff, #9cd8de, #3977ab, #4c6669, #fff9aa, #ffffff, #ffffff);
+    background-size: 300% 300%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 3s infinite;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+    0%,
+    100% {
+        letter-spacing: 28px;
+    }
+
+    50% {
+        letter-spacing: 5px;
+    }
+}
+
+
+h3 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    font-size: 2rem;
+    margin: 0;
+    color: #9dedff;
+    animation: moveText 3s infinite;
+    margin-top: 290px;
+}
+
+@keyframes moveText {
+
+    0%,
+    100% {
+        letter-spacing: 2px;
+    }
+
+    50% {
+        letter-spacing: 8px;
+    }
+}
+
+header nav ul {
+    list-style: none;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+/* Contenedor principal de contenido superpuesto */
+.overlay {
+    margin-top: 40px;
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+}
+
+.overlay1 {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+}
+
+/* Botones */
+.button-container {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+button {
+    position: relative;
+    font-size: 0.8rem;
+    color: #fff;
+    border: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: all 0.5s ease;
+    border-radius: 8px;
+}
+
+button:hover {
+    letter-spacing: 5px;
+    color: #54ecec;
+    animation: box 3s infinite;
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+}
+
+button span {
+    position: relative;
+    z-index: 1;
+}
+
+button i {
+    position: absolute;
+    inset: 0;
+    display: block;
+}
+
+button i::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: 80%;
+    width: 6px;
+    height: 1px;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+button:hover i::before {
+    left: 20%;
+    width: 15px;
+    animation: move 3s infinite;
+}
+
+button i::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 20%;
+    width: 6px;
+    height: 1px;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+button:hover i::after {
+    left: 80%;
+    width: 15px;
+    animation: move 2s infinite;
+}
+
+@keyframes move {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes box {
+    0% {
+        box-shadow: #ffffff;
+    }
+
+    50% {
+        box-shadow: 0 0 20px #00d0ff;
+    }
+
+    100% {
+        box-shadow: #ffffff;
+    }
+}
+
+
+@media (max-width: 768px) {
+    #background-video {
+        object-fit: cover;
+    }
+
+    .overlay {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .button {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+
+    .button-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
