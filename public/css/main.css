@@ -39,8 +39,6 @@ footer {
   color: #fff;
   position: relative;
 }
-
-
 /*REDES SOCIALES*/
 .bottom-object {
     position: fixed;
@@ -49,10 +47,8 @@ footer {
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 15px;
-   
+    gap: 15px;  
 }
-
 ul {
     display: flex;
     flex-direction: column;
@@ -61,16 +57,13 @@ ul {
     list-style: none;
     gap:5px
 }
-
 li {
   padding: 4px 6px; /* Opcional: padding en cada botón para aumentar el espacio interno */
 }
-
 .item-content {
     position: relative;
     margin: 0 10px;
 }
-
 .item-content a {
     position: relative;
     overflow: hidden;
@@ -84,22 +77,18 @@ li {
     background-color: #fff;
     transition: all 0.3s ease-in-out;
 }
-
 .item-content a:hover {
     box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
 }
-
 .item-content a svg {
     position: relative;
     z-index: 1;
     width: 25px;
     height: 25px;
 }
-
 .item-content a:hover {
     color: #fff;
 }
-
 .item-content a .filled {
     position: absolute;
     bottom: 0;
@@ -109,11 +98,9 @@ li {
     background-color: #000;
     transition: all 0.4s ease-in-out;
 }
-
 .item-content a:hover .filled {
     height: 100%;
 }
-
 .item-content a[data-social="instagram"] .filled,
 .item-content a[data-social="instagram"] ~ .tooltip::before {
     background: linear-gradient(
@@ -126,7 +113,6 @@ li {
         #fd1f1f
     );
 }
-
 .item-content a[data-social="linkedin"] .filled,
 .item-content a[data-social="linkedin"] ~ .tooltip::before {
   background-color: #0274b3;
@@ -171,4 +157,61 @@ ul .tooltip::before {
 
 .item-content:hover .tooltip::before {
     height: 100%;
+}
+
+/* Celulares pequeños */
+@media (max-width: 480px) {
+  body {
+      font-size: 14px;
+  }
+
+  .button-container {
+      flex-direction: column;
+      gap: 15px;
+  }
+
+  button {
+      font-size: 16px;
+      padding: 8px 15px;
+  }
+}
+
+/* Tablets y pantallas medianas */
+@media (max-width: 768px) {
+  body {
+      font-size: 16px;
+  }
+
+  .container {
+      padding: 0 15px;
+  }
+
+  button {
+      font-size: 18px;
+      padding: 10px 20px;
+  }
+}
+
+/* Pantallas grandes (notebooks/PC) */
+@media (max-width: 1024px) {
+  .container {
+      width: 95%;
+  }
+
+  button {
+      font-size: 20px;
+      padding: 12px 25px;
+  }
+}
+
+/* Pantallas muy grandes (TV o monitores ultra anchos) */
+@media (min-width: 1600px) {
+  .container {
+      max-width: 1400px;
+  }
+
+  button {
+      font-size: 24px;
+      padding: 15px 30px;
+  }
 }
