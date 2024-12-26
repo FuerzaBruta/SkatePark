@@ -2,44 +2,39 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const { engine } = require('express-handlebars');
+
+// Inicialización
 const app = express();
-const port = 3000;
+const PORT = 3000;
 
-// Configurar Express para servir archivos estáticos desde la carpeta 'public'
+// Middleware para archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
-
-// Middleware para procesar datos de formularios
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Configuración de Handlebars
 app.engine('hbs', engine({
     extname: 'hbs',
-    layoutsDir: __dirname + '/views/layouts', // Ruta de layouts
+    layoutsDir: path.join(__dirname, 'views', 'layouts'),
     defaultLayout: 'main',
 }));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Página de inicio
+// RUTAS
+
+// Página principal
 app.get('/', (req, res) => {
     res.render('index', { title: 'SkatePark', message: 'Bienvenido al SkatePark' });
 });
 
 // Página de inicio de sesión
-app.get('/login', (req, res) => {
-    res.render('login'); // Renderiza la vista login.hbs
-});
+app.get('/login', (req, res) => res.render('login'));
 
-app.get('/signup', (req, res) => {
-    res.render('signup'); // Renderiza la vista de registro
-});
-
-
-// Procesar el formulario de inicio de sesión
 app.post('/login', (req, res) => {
-    const { username, password } = req.body;
-    if (username === 'admin' && password === '1234') {
-        console.log(`Inicio de sesión exitoso: Usuario: ${username}`);
+    const { email, password } = req.body;
+    if (email === 'admin@email.com' && password === '1234') {
+        console.log('Inicio de sesión exitoso');
         res.redirect('/dashboard');
     } else {
         console.log('Credenciales inválidas');
@@ -47,24 +42,23 @@ app.post('/login', (req, res) => {
     }
 });
 
+// Página de registro
+app.get('/register', (req, res) => res.render('register'));
+
 app.post('/register', (req, res) => {
     const { name, email, password } = req.body;
-
-    // Aquí puedes agregar la lógica para guardar el usuario en tu base de datos
-    console.log(`Nombre: ${name}, Email: ${email}`);
-
-    // Redirigir a otra página después del registro exitoso
-    res.redirect('/login');
+    console.log(`Registro: Nombre: ${name}, Email: ${email}`);
+    res.redirect('/login'); // Redirigir al login tras el registro
 });
-
 
 // Dashboard
 app.get('/dashboard', (req, res) => {
-    res.render('dashboard', { title: 'Panel de Control' });
+    res.render('dashboard', { title: 'Panel de Control', user: null });
 });
 
-// Participantes JSON
+// Mostrar participantes desde un archivo JSON
 const filePath = path.join(__dirname, 'participants.json');
+
 const getParticipants = () => {
     try {
         const data = fs.readFileSync(filePath);
@@ -75,13 +69,17 @@ const getParticipants = () => {
     }
 };
 
-// Mostrar los participantes
 app.get('/participants', (req, res) => {
     const participants = getParticipants();
     res.render('participants', { participants });
 });
 
-// Iniciar el servidor
-app.listen(port, () => {
-    console.log(`Servidor corriendo en http://localhost:${port}`);
+// Rutas de error 404
+app.use((req, res) => {
+    res.status(404).send('Página no encontrada');
+});
+
+// Iniciar servidor
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });

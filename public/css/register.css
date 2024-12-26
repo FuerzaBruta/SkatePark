@@ -1,0 +1,325 @@
+* {
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+.container {
+    
+        margin-top: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 30px;
+        flex: 1;
+        text-align: center;
+    }
+    
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.row > * {
+    flex: 1 1 200px;
+    margin-bottom: 20px;
+}
+
+.modal {
+    color: #ffffff;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal.open {
+    z-index: 999;
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 997;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal.open .modal-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* modal container */
+.modal-container {
+    position: absolute;
+    width: 50rem;
+    height: auto;
+    max-height: 90vh;
+    border-radius: 15px;
+    z-index: 998;
+    background-color: rgba(0, 0, 0, 0.85);
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 8px;
+    display: flex;
+    flex-direction: column;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+}
+
+.modal.open .modal-container {
+    transform: scale(1);
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    font-size: 30px;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 30px;
+    gap: 50px;
+}
+
+.modal-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 25px;
+    max-height: calc(100vh - 250px);
+}
+
+.close-icon {
+    font-size: 20px;
+    cursor: pointer;
+    color: #fff;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.close-icon:hover {
+    color: #54ecec;
+    box-shadow: 0 0 20px #00d0ff;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+}
+
+.input {
+    width: 100%;
+    border: solid 1.5px #54ecec;
+    border-radius: 7px;
+    background: none;
+    padding: 15px;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.label {
+    position: absolute;
+    left: 15px;
+    color: #a0a0a0;
+    font-weight: 500;
+    font-size: 18px;
+    pointer-events: none;
+    transform: translateY(15px);
+    transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input:focus {
+    outline: none;
+}
+
+.input:focus ~ .label,
+.input:not(:placeholder-shown) ~ .label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(0);
+    transition: opacity 150ms ease-in-out;
+}
+
+.button {
+    cursor: pointer;
+    display: flex;
+    font-size: 14px;
+    color: #fff;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    color: #54ecec;
+    letter-spacing: 3px;
+    box-shadow: 0 0 20px #00d0ff;
+}
+
+.btn-home {
+    font-size: 14px;
+    color: #fff;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-home:hover {
+    color: #54ecec;
+    letter-spacing: 3px;
+    box-shadow: 0 0 20px #00d0ff;
+}
+
+.button-container {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    z-index: 1000;
+}
+
+/* File input styles */
+#file-upload {
+    display: block;
+    margin-top: 15px;
+    border: solid 1.5px #54ecec;
+    padding: 10px;
+    background: none;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+#file-upload::file-selector-button {
+    background-color: #00d0ff;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+#file-upload:hover {
+    border-color: #00d0ff;
+}
+
+/* Estilos para el modal de participantes */
+#participantsModal {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;/* Evitar que se desborde contenido fuera del modal */
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.2);      
+    position: fixed;
+    top: 50%;      
+    left: 50%;        
+    transform: translate(-50%, -50%);
+    border-radius: 10px; 
+    padding: 20px;  
+}
+
+.participants-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 500px;   
+}
+
+.participant {
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 10px;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.participant:hover {
+    transform: scale(1.05);
+}
+
+.participant-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.participant-info {
+    flex: 1;
+}
+
+.participant-info h3 {
+    font-size: 18px;
+    color: #54ecec;
+    margin-bottom: 5px;
+}
+
+.participant-info p {
+    font-size: 14px;
+    color: #a0a0a0;
+}
+
+#closeParticipantsModalBtn {
+    font-size: 20px;
+    cursor: pointer;
+    color: #fff;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+#closeParticipantsModalBtn:hover {
+    color: #54ecec;
+    box-shadow: 0 0 20px #00d0ff;
+}
+
+

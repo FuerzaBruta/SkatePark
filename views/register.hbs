@@ -5,19 +5,192 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registro - SkatePark</title>
-    <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/css/form.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/register.css">
 </head>
 
 <body>
   {{> header}}
 
-<body>
-  <h1>
-    Pagina de registro
-  </h1>
-</body>
-  <script src="/js/main.js"></script>
+  <div class="container">
+    <!-- Botones para abrir los modales -->
+    <button class="button toggleButton" id="inscriptionBtn">Inscripción</button>
+    <button class="button toggleButton" id="participantsBtn" style="margin-left: 30px;">Participantes</button>
+    <button class="button toggleButton" id="openEventsModalBtn">Ver Eventos</button>
+  </div>
+
+  <!-- Modal Inscripción -->
+  <div class="modal" id="inscriptionModal">
+    <div class="modal-overlay"></div>
+    <div class="modal-container">
+      <form class="form">
+        <div class="modal-header">
+          <h2>Registrate!</h2>
+          <div class="close-icon toggleButton" id="closeInscriptionModal">&times;</div>
+        </div>
+
+        <div class="modal-content">
+          <div class="row">
+            <div class="input-group">
+              <input type="text" name="firstName" class="input" placeholder=" " required>
+              <label class="label">Nombre</label>
+            </div>
+            <div class="input-group">
+              <input type="text" name="lastName" class="input" placeholder=" " required>
+              <label class="label">Apellido</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-group">
+              <input type="email" name="email" class="input" placeholder=" " required>
+              <label class="label">Email</label>
+            </div>
+            <div class="input-group">
+              <input type="tel" name="phone" class="input" placeholder=" " required>
+              <label class="label">Celular</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-group">
+              <input type="text" name="age" class="input" placeholder=" " required>
+              <label class="label">Años de Experiencia</label>
+            </div>
+            <div class="input-group">
+              <input type="text" name="address" class="input" placeholder=" " required>
+              <label class="label">Especialidad</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-group">
+              <input type="text" name="city" class="input" placeholder=" " required>
+              <label class="label">Ciudad</label>
+            </div>
+            <div class="input-group">
+              <input type="text" name="state" class="input" placeholder=" " required>
+              <label class="label">Pais</label>
+            </div>
+          </div>
+
+          <!-- Sección para cargar fotografía -->
+          <div class="row">
+            <div class="input-group">
+              <input type="file" name="photo" class="input" id="file-upload" accept="image/*">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="button toggleButton" id="closeInscriptionModalBtn">Salir</button>
+          <button type="submit" class="button">Inscribirme</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal de participantes -->
+  <div class="modal" id="participantsModal">
+    <div class="modal-overlay"></div>
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2>Participantes Inscritos</h2>
+        <span class="close-icon" id="closeParticipantsModalBtn">&times;</span>
+      </div>
+      <div class="modal-content">
+        <ul class="participants-list">
+          <!-- Ejemplo de participante -->
+          <li class="participant">
+            <img src="/img/tonny.webp" alt="Foto de Participante" class="participant-photo">
+            <div class="participant-info">
+              <h3>Alejandro Orellana Magna</h3>
+              <p>participante@example.com</p>
+            </div>
+          </li>
+          <!-- Puedes agregar más participantes aquí -->
+          <li class="participant">
+            <img src="/img/tonny.webp" alt="Foto de Participante" class="participant-photo">
+            <div class="participant-info">
+              <h3>Alejandro Orellana Magna</h3>
+              <p>participante@example.com</p>
+            </div>
+          </li>
+
+          <li class="participant">
+            <img src="/img/tonny.webp" alt="Foto de Participante" class="participant-photo">
+            <div class="participant-info">
+              <h3>Alejandro Orellana Magna</h3>
+              <p>participante@example.com</p>
+            </div>
+          </li>
+
+          <li class="participant">
+            <img src="/img/tonny.webp" alt="Foto de Participante" class="participant-photo">
+            <div class="participant-info">
+              <h3>Alejandro Orellana Magna</h3>
+              <p>participante@example.com</p>
+            </div>
+          </li>
+
+          <li class="participant">
+            <img src="/img/tonny.webp" alt="Foto de Participante" class="participant-photo">
+            <div class="participant-info">
+              <h3>Alejandro Orellana Magna</h3>
+              <p>participante@example.com</p>
+            </div>
+          </li>
+
+          <li class="participant">
+            <img src="/img/tonny.webp" alt="Foto de Participante" class="participant-photo">
+            <div class="participant-info">
+              <h3>Alejandro Orellana Magna</h3>
+              <p>participante@example.com</p>
+            </div>
+          </li>
+
+          <li class="participant">
+            <img src="/img/tonny.webp" alt="Foto de Participante" class="participant-photo">
+            <div class="participant-info">
+              <h3>Alejandro Orellana Magna</h3>
+              <p>participante@example.com</p>
+            </div>
+          </li>
+          
+        </ul>
+      </div>
+      {{!-- <div class="modal-footer">
+        <button type="button" class="button toggleButton" id="closeParticipantsModalBtn" class="button">Cerrar</button>
+
+      </div> --}}
+    </div>
+  </div>
+
+  <!-- Modal de Eventos -->
+<div id="eventsModal" class="modal">
+    <div class="modal-content">
+        <span id="closeEventsModalBtn" class="close-btn">&times;</span>
+        <h2>Eventos</h2>
+        <div class="events-list">
+            <!-- Aquí irán los eventos -->
+            <div class="event">
+                <h3>Evento 1</h3>
+                <p>Descripción del evento 1.</p>
+            </div>
+            <div class="event">
+                <h3>Evento 2</h3>
+                <p>Descripción del evento 2.</p>
+            </div>
+            <!-- Agrega más eventos aquí -->
+        </div>
+    </div>
+</div>
+
+  <div class="overlay">
+    <div class="button-container">
+      <a href="/" class="btn-home">Regresar a Inicio</a>
+    </div>
+  </div>
+
+  <script src="/js/register.js"></script>
 </body>
 
 </html>
